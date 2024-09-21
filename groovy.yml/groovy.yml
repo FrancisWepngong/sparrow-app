@@ -1,0 +1,36 @@
+name: groovy-setup
+
+'on':
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+steps:
+  - uses: wtfjoke/setup-groovy@v2
+    with:
+      groovy-version: '4.x'
+  - run: groovy --version
+
+  steps:
+  - uses: actions/checkout@v3
+  - uses: wtfjoke/setup-groovy@v2
+    with:
+      groovy-version: '4.0.9'
+  - run: groovy HelloWorld.groovy
+
+  steps:
+  - uses: actions/checkout@v3
+  - uses: wtfjoke/setup-groovy@v2
+    with:
+      groovy-version: '4.0'
+  - run: groovy HelloWorld.groovy
+
+  steps:
+  - uses: actions/checkout@v3
+  - uses: wtfjoke/setup-groovy@v2
+    with:
+      groovy-version: '>=3.x <4.0.0'
+  - run: groovy HelloWorld.groovy
